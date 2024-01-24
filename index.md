@@ -10,4 +10,5 @@ interests:
 5. physical activity: lawn tennis, cycling, gym, swimming (potentially) 
 6. productive hobbies: photography, videography & editing
 7. not-so-productive hobbies: casual gaming, watching shows/movies, listening to music, cooking
+
 ... and much more.
