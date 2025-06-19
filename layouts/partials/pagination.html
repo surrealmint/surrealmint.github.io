@@ -1,0 +1,22 @@
+{{ $paginator := .Paginator }}
+{{ if gt $paginator.TotalPages 1 }}
+<div class="flex justify-between items-center mt-12">
+    <div>
+        {{ if $paginator.HasPrev }}
+            <a href="{{ $paginator.Prev.URL }}" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600">
+                &larr; Newer Posts
+            </a>
+        {{ end }}
+    </div>
+    <div class="text-gray-500 dark:text-gray-400">
+        Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
+    </div>
+    <div>
+        {{ if $paginator.HasNext }}
+            <a href="{{ $paginator.Next.URL }}" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600">
+                Older Posts &rarr;
+            </a>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

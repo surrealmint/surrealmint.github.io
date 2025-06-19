@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us" class="scroll-smooth">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Post on This Awesome New Site | analogarden</title>
+    
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+    
+    <style>
+         
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+        pre, code {
+            font-family: 'Source Code Pro', monospace;
+        }
+         
+        .highlight {
+            @apply bg-gray-100 dark:bg-gray-800 rounded-lg p-4 my-4 overflow-x-auto text-sm;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        
+        <header class="flex justify-between items-center py-8 border-b-2 border-gray-200 dark:border-gray-700">
+    
+    <div class="text-2xl font-bold">
+        <a href="http://localhost:1313/" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">analogarden</a>
+    </div>
+
+    
+    <nav class="hidden md:flex items-center space-x-6">
+        
+        <a href="/" class="text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
+        
+        <a href="/blog/" class="text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
+        
+        <a href="/projects/" class="text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
+        
+        <a href="/about/" class="text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+        
+        
+        
+        <button id="theme-toggle" class="ml-4 p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">
+            
+            <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 6.464l.707.707a1 1 0 001.414-1.414l-.707-.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z"></path></svg>
+            
+            <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+        </button>
+    </nav>
+    
+</header>
+
+
+        
+        <main id="content" class="py-8">
+            
+    <article class="prose dark:prose-invert lg:prose-xl max-w-none">
+        <h1>My First Post on This Awesome New Site</h1>
+        <p class="text-gray-500 dark:text-gray-400">
+            <time>May 20, 2024</time> &bull; 1 min read
+        </p>
+        
+        
+        
+            <div class="my-6 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                <h2 class="text-xl font-bold mb-2">On this page</h2>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#welcome-to-my-blog">Welcome to My Blog</a>
+      <ul>
+        <li><a href="#why-hugo">Why Hugo?</a></li>
+        <li><a href="#code-blocks">Code Blocks</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+        
+        
+        
+        <h2 id="welcome-to-my-blog">Welcome to My Blog</h2>
+<p>This is the beginning of my new digital garden. I&rsquo;m using <strong>Hugo</strong>, a static site generator written in Go. It&rsquo;s incredibly fast and flexible.</p>
+<h3 id="why-hugo">Why Hugo?</h3>
+<ol>
+<li><strong>Speed:</strong> The build times are almost instantaneous.</li>
+<li><strong>Simplicity:</strong> Content is managed in simple Markdown files.</li>
+<li><strong>Security:</strong> Static sites have a much smaller attack surface than dynamic, database-driven sites.</li>
+</ol>
+<h3 id="code-blocks">Code Blocks</h3>
+<p>One of the best features is the built-in syntax highlighting. Here&rsquo;s a little JavaScript example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Simple function to greet a user
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">greet</span>(<span style="color:#a6e22e">name</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Hello, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">! Welcome to the site.`</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">greet</span>(<span style="color:#e6db74">&#39;Visitor&#39;</span>);
+</span></span></code></pre></div><p>This is just the beginning. I plan to write about web development, design, and technology. Stay tuned!</p>
+
+    </article>
+
+        </main>
+
+        
+        <footer class="py-8 text-center text-gray-500 dark:text-gray-400 border-t-2 border-gray-200 dark:border-gray-700">
+    <p>&copy; 2025 surrealmint. All rights reserved.</p>
+    <p class="mt-2 text-sm">
+        Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener" class="underline hover:text-blue-500">Hugo</a> &amp;
+        Built with <a href="https://tailwindcss.com" target="_blank" rel="noopener" class="underline hover:text-blue-500">TailwindCSS</a>.
+    </p>
+    
+</footer>
+
+    </div>
+
+    
+    <script src="/js/main.js"></script>
+</body>
+</html>
