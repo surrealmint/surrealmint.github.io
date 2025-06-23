@@ -4,51 +4,453 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Custom Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@700&family=Inter:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Custom Styles -->
     <style>
-        /* Define fonts for Tailwind */
-        body {
-            font-family: 'Inter', sans-serif;
+        /* --- Color & Font Definitions --- */
+        :root {
+            --mint-accent: #6EE7B7;
+            --light-bg-main: #fdf9ee; 
+            --light-bg-sidebar: #eee8d5; 
+            --light-text: #181818; /* Dark text for light mode */
+            --dark-bg-main: #181818; /* Changed: Lighter dark gray for main background */
+            --dark-bg-sidebar: #1f1f1f; /* Remains current dark sidebar color */
+            --dark-text: #fdf9ee; /* Light text for dark mode */
+            --post-heading-color: #f4b9b2; /* New color for post headings */
+            /* New sidebar/header hover colors */
+            --light-sidebar-hover: #e0d9c1; /* Slightly darker than light-bg-sidebar */
+            --dark-sidebar-hover: #171717; /* Slightly darker than dark-bg-sidebar */
         }
-        h1, h2, h3, h4, h5, h6 {
+        /* --- Base Font Styles --- */
+        body {
+            font-family: 'Inter', sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* Robust fallback stack */
+            font-size: 17.6px;
+            transition: background-color 0.3s, color 0.3s;
+            overflow: hidden; /* Hide scrollbar during preloading */
+        }
+        /* Base headings (outside .prose) will use Gabarito and Tailwind classes (e.g., text-4xl, font-bold) in HTML */
+        h1, h2, h3, h4, h5, h6 { 
+            font-family: 'Gabarito', sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-weight: 700; 
+        }
+
+        /* --- Theme-specific background and base text colors for body --- */
+        body.light { 
+            background-color: var(--light-bg-main); 
+            color: var(--light-text); /* Ensure light text is dark */
+        }
+        body.dark { 
+            background-color: var(--dark-bg-main); 
+            color: var(--dark-text); /* Ensure dark text is light */
+        }
+
+        /* AGGRESSIVE COLOR OVERRIDES for general text and main content */
+        /* These rules use higher specificity to ensure your theme colors win */
+        /* Applying color to general text elements */
+        main p, main span, main div, 
+        .prose p, .prose li, .prose strong, .prose em, .prose code, 
+        .posts-list article p, .posts-list article span, .posts-list article div { 
+            color: inherit !important; /* Force inheritance from body (which has correct light/dark color) */
+        }
+
+        /* --- Global background reset, EXCLUDING the sidebar-container --- */
+        .flex, .w-64, .flex-1, .max-w-5xl, 
+        header, main, footer, article, section, div, p, span, ul, li {
+            background-color: transparent; 
+        }
+
+        /* Explicit background colors for specific components */
+        /* Sidebar background */
+        .sidebar-container { 
+            background-color: var(--light-bg-sidebar); 
+        }
+        body.dark .sidebar-container { 
+            background-color: var(--dark-bg-sidebar); 
+        }
+        /* Card/box backgrounds (Recent posts, list pages, search results, TOC) */
+        .recent-posts article, .section-list-page article, #results-list article, .post-toc-container, .post-logo-container {
+            background-color: var(--light-bg-sidebar); /* Use sidebar light shade for cards */
+        }
+        body.dark .recent-posts article, body.dark .section-list-page article, body.dark #results-list article, body.dark .post-toc-container, body.dark .post-logo-container {
+            background-color: var(--dark-bg-sidebar); /* Use sidebar dark shade for cards */
+        }
+        /* Search bar background */
+        .search-bar {
+            background-color: var(--light-bg-sidebar);
+            color: var(--light-text); /* Ensure search bar text is readable in light mode */
+        }
+        body.dark .search-bar {
+            background-color: var(--dark-bg-sidebar);
+            color: var(--dark-text); /* Ensure search bar text is readable in dark mode */
+        }
+
+        /* --- Global Link Styling (Tania's cleaner design with custom underline) --- */
+        a { /* Applies to ALL links site-wide by default, then overridden by specific contexts */
+            color: var(--mint-accent); /* Default link color for all anchors */
+            text-decoration: none; /* No default browser underline */
+            transition: color 0.3s ease; /* Smooth color transition */
+        }
+
+        /* New: Styling for post title links (normal state is post-heading-color, hover is mint) */
+        .post-title-link {
+            color: var(--post-heading-color) !important; /* Force post heading color */
+            position: relative;
+            text-decoration: none; /* Ensure no browser default underline */
+        }
+        .post-title-link:after { /* Animated underline for post titles */
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            left: 0;
+            background: var(--mint-accent); /* Mint underline */
+            transition: width 0.3s ease;
+        }
+        .post-title-link:hover {
+            color: var(--mint-accent) !important; /* Text turns mint on hover */
+        }
+        .post-title-link:hover:after {
+            width: 100%; /* Underline expands on hover */
+        }
+
+        /* Other links in main content area (`<main>`) use this specific hover effect */
+        main a:not(.post-title-link) { /* Exclude post-title-links */
+            position: relative;
+        }
+        main a:not(.post-title-link):after { /* Custom animated underline for non-post-title links in main content */
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            left: 0;
+            background: var(--mint-accent);
+            transition: width 0.3s ease;
+        }
+        main a:not(.post-title-link):hover:after {
+            width: 100%;
+        }
+
+        /* --- Sidebar Specific Link Styling (New Hover Effect) --- */
+        .sidebar-nav ul li a { /* Target actual links in sidebar nav list items */
+            display: block; /* Make the whole area clickable for the box effect */
+            padding: 0.5rem 0.5rem; /* Padding for the box effect */
+            border-radius: 0.25rem; /* Slightly rounded corners for the box */
+            text-decoration: none; /* No underline by default */
+            color: inherit; /* Inherit text color from sidebar */
+            opacity: 0.7; /* Initial opacity */
+            transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+        }
+        .sidebar-nav ul li a:hover {
+            opacity: 1; /* Full opacity on hover */
+            color: var(--mint-accent); /* Text color changes to mint on hover */
+            background-color: var(--light-sidebar-hover); /* Light mode hover background */
+        }
+        body.dark .sidebar-nav ul li a:hover {
+            background-color: var(--dark-sidebar-hover); /* Dark mode hover background */
+        }
+        /* Ensure site title link doesn't get this hover effect */
+        .sidebar-container .site-title-link {
+            opacity: 1; /* Always opaque */
+            background-color: transparent !important; /* Ensure no background hover */
+        }
+        .sidebar-container .site-title-link:hover {
+            color: inherit; /* Text color doesn't change for site title */
+        }
+
+        /* --- Header Navigation Link Styling (New Hover Effect - Matches Sidebar) --- */
+        .header-nav-link-item { /* New class for header links */
+            display: inline-block; /* Essential for padding/background */
+            padding: 0.5rem 0.75rem; /* Slightly more horizontal padding than sidebar */
+            border-radius: 0.25rem;
+            text-decoration: none;
+            color: inherit; /* Inherit initial color from header/body */
+            opacity: 0.8; /* Initial opacity */
+            transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+        }
+        .header-nav-link-item:hover {
+            opacity: 1;
+            color: var(--mint-accent);
+            background-color: var(--light-sidebar-hover);
+        }
+        body.dark .header-nav-link-item:hover {
+            background-color: var(--dark-sidebar-hover);
+        }
+
+
+        /* --- Sidebar Category Dividers --- */
+        .sidebar-category-heading {
+            border-bottom: 1px solid #e0e0e0; /* Light mode divider */
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.75rem; /* Space below divider */
+        }
+        body.dark .sidebar-category-heading {
+            border-color: #2a2a2a; /* Dark mode divider */
+        }
+
+
+        /* --- Header Border --- */
+        .header-border { border-color: #e0e0e0; }
+        body.dark .header-border { border-color: #2a2a2a; }
+
+        /* --- Preloader Styles --- */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #1A1A1A;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #preloader-text-container {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+        #preloader-text-container .mint-color {
+            color: var(--mint-accent);
+        }
+
+        .blinking-cursor {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { border-right-color: transparent; }
+            50% { border-right: 2px solid #E0E0E0; }
+        }
+
+        /* --- Underline for "i'm surrealmint." --- */
+        .intro-heading-underline {
+            display: inline-block;
+            padding-bottom: 5px;
+            border-bottom: 5px solid var(--mint-accent);
+        }
+
+        /* --- Search Results Container Style --- */
+        #search-results.border {
+            border-color: #dcd5c1; /* Light mode border */
+        }
+        body.dark #search-results.border {
+            border-color: #2a2a2a; /* Dark mode border */
+        }
+
+        /* --- Table of Contents (ToC) Specific Styles --- */
+        .post-toc-container {
+            border: 1px solid #e0e0e0; /* Light mode border */
+            padding: 1rem;
+            margin-bottom: 1.5rem; /* Space below the ToC box */
+            /* Background explicitly set above */
+        }
+        body.dark .post-toc-container {
+            border-color: #2a2a2a; /* Dark mode border */
+        }
+
+        .post-toc-container h4 { /* "In This Article" heading */
             font-family: 'Inter', sans-serif;
             font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+            color: inherit;
         }
-        pre, code {
-            font-family: 'Source Code Pro', monospace;
+
+        .post-toc-list ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 0;
         }
-        /* Basic syntax highlighting adjustments */
-        .highlight {
-            @apply bg-gray-100 dark:bg-gray-800 rounded-lg p-4 my-4 overflow-x-auto text-sm;
+
+        .post-toc-list ul ul {
+            padding-left: 1rem;
+        }
+
+        .post-toc-list li a {
+            display: block;
+            padding: 0.25rem 0;
+            font-size: 0.9375rem;
+            color: inherit; /* Inherit from ToC container text color */
+            opacity: 0.8;
+            transition: opacity 0.2s ease-in-out;
+            text-decoration: none;
+        }
+
+        .post-toc-list li a:hover {
+            opacity: 1;
+            color: var(--mint-accent);
+            text-decoration: underline;
+        }
+
+        /* --- PROSE STYLES FIX (Critical for headings in posts) --- */
+        .main-post-content {
+            /* This div wraps your .Content in single.html */
+        }
+        /* Specific overrides for h1-h6 within the .prose content */
+        .main-post-content .prose h1, .main-post-content .prose h2, 
+        .main-post-content .prose h3, .main-post-content .prose h4, 
+        .main-post-content .prose h5, .main-post-content .prose h6 {
+            font-family: 'Gabarito', sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-weight: 700 !important; /* Force boldness */
+            color: inherit; /* Inherit base text color from body */
+            margin-top: 1.5em; /* Tailwind prose default margin-top for headings */
+            margin-bottom: 0.75em; /* Tailwind prose default margin-bottom for headings */
+        }
+
+        /* Explicit font sizes for headings within .prose */
+        .main-post-content .prose h1 { font-size: 2.25em; } /* Roughly Tailwind's text-4xl equivalent within prose */
+        .main-post-content .prose h2 { font-size: 1.875em; } /* Roughly Tailwind's text-3xl equivalent within prose */
+        .main-post-content .prose h3 { font-size: 1.5em; }  /* Roughly Tailwind's text-2xl equivalent within prose */
+        .main-post-content .prose h4 { font-size: 1.25em; } /* Roughly Tailwind's text-xl equivalent within prose */
+        .main-post-content .prose h5 { font-size: 1.125em; } /* Roughly Tailwind's text-lg equivalent within prose */
+        .main-post-content .prose h6 { font-size: 1em; }    /* Roughly Tailwind's text-base equivalent within prose */
+
+        /* Ensure .prose links and text color are correct */
+        .prose {
+            color: inherit; /* Inherit from body for main text */
+        }
+        .prose a {
+            color: var(--mint-accent); /* Links within prose are mint */
+            text-decoration: none;
+        }
+        .prose a:hover {
+            text-decoration: underline; /* Standard underline for prose links on hover */
         }
     </style>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+<body class="light">
 
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Site Header -->
-        {{ partial "header.html" . }}
-
-        <!-- Main Content -->
-        <main id="content" class="py-8">
-            {{ block "main" . }}{{ end }}
-        </main>
-
-        <!-- Site Footer -->
-        {{ partial "footer.html" . }}
+    <!-- Preloader HTML at the very top of the body -->
+    <div id="preloader">
+        <div id="preloader-text-container">
+            <span id="preloader-text"></span><span class="blinking-cursor">&nbsp;</span>
+        </div>
     </div>
 
-    <!-- Dark Mode Toggle Script -->
-    <script src="{{ "/js/main.js" | relURL }}"></script>
+    <div class="flex">
+        <aside class="w-64 flex-shrink-0 hidden md:block">
+            <div class="fixed top-0 left-0 h-full w-64 p-6 overflow-y-auto sidebar-container">
+                {{ partial "sidebar.html" . }}
+            </div>
+        </aside>
+
+        <div class="flex-1 min-w-0">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                {{ partial "header.html" . }}
+                <main id="content" class="py-8">
+                    {{ block "main" . }}{{ end }}
+                </main>
+                {{ partial "footer.html" . }}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Theme Toggle Logic (unchanged) ---
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const bodyElement = document.body;
+            const lightIcon = document.getElementById('theme-toggle-light-icon');
+            const darkIcon = document.getElementById('theme-toggle-dark-icon');
+            function applyTheme(theme) {
+                const isDark = theme === 'dark';
+                bodyElement.classList.toggle('dark', isDark); bodyElement.classList.toggle('light', !isDark);
+                if (lightIcon && darkIcon) {
+                    lightIcon.classList.toggle('hidden', !isDark);
+                    darkIcon.classList.toggle('hidden', isDark);
+                }
+            }
+            function setInitialTheme() {
+                const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                applyTheme(savedTheme);
+            }
+            setInitialTheme();
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    const newTheme = bodyElement.classList.contains('dark') ? 'light' : 'dark';
+                    applyTheme(newTheme); localStorage.setItem('theme', newTheme);
+                });
+            }
+
+            // --- Preloader Logic (Modified for sessionStorage) ---
+            const preloader = document.getElementById('preloader');
+            const preloaderText = document.getElementById('preloader-text');
+            const targetFullText = '$ mkdir nlogrdn';
+            const prefixText = '$ mkdir ';
+            const mintColorText = 'nlogrdn';
+            const mintColorStartIndex = prefixText.length;
+
+            let i = 0;
+            let isPageLoaded = false;
+            let isTypingComplete = false;
+            const postTypingDelay = 1000;
+            const preloaderShownKey = 'preloaderShown'; // Key for sessionStorage
+
+            // Function to actually hide the preloader
+            function hidePreloader() {
+                if (preloader) {
+                    preloader.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+
+            // Check sessionStorage
+            if (sessionStorage.getItem(preloaderShownKey) === 'true') {
+                // If preloader has been shown in this session, hide it immediately
+                hidePreloader();
+            } else {
+                // If not shown, run the preloader animation
+                function typeWriter() {
+                    if (i < targetFullText.length) {
+                        let currentTypedHTML = '';
+                        const typedSoFar = targetFullText.substring(0, i + 1);
+
+                        if (i < mintColorStartIndex) {
+                            currentTypedHTML = typedSoFar;
+                        } else {
+                            const prefixTyped = targetFullText.substring(0, mintColorStartIndex);
+                            const mintTyped = targetFullText.substring(mintColorStartIndex, i + 1);
+                            currentTypedHTML = prefixTyped + `<span class="mint-color">` + mintTyped + `</span>`;
+                        }
+
+                        preloaderText.innerHTML = currentTypedHTML;
+                        i++;
+                        setTimeout(typeWriter, 150);
+                    } else {
+                        isTypingComplete = true;
+                        const finalPrefix = targetFullText.substring(0, mintColorStartIndex);
+                        const finalMintText = targetFullText.substring(mintColorStartIndex);
+                        preloaderText.innerHTML = finalPrefix + `<span class="mint-color">` + finalMintText + `</span>`;
+
+                        // Set the flag in sessionStorage that preloader has been shown
+                        sessionStorage.setItem(preloaderShownKey, 'true');
+
+                        // After typing is done, wait for a short delay, then hide preloader
+                        setTimeout(hidePreloader, postTypingDelay);
+                    }
+                }
+
+                if (preloaderText) {
+                    typeWriter();
+                }
+
+                // Ensure it still hides if page loads extremely fast before typing completes
+                window.addEventListener('load', () => {
+                    isPageLoaded = true;
+                    if (sessionStorage.getItem(preloaderShownKey) === 'true') {
+                         hidePreloader();
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="/js/search.js"></script> 
 </body>
 </html>

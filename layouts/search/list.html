@@ -1,0 +1,43 @@
+{{ define "main" }}
+<div class="search-results-page-container">
+    <h1 class="text-4xl font-bold mb-8">Search Results</h1>
+
+    {{/* Removed the second search bar from here */}}
+    {{/*
+    <div class="mb-8">
+        <form id="search-form-on-page" role="search" aria-label="search-form-on-page">
+            <input type="search" id="search-input-on-page" placeholder="Search again..." autocomplete="off" class="w-full rounded-md py-2 pl-4 pr-10 focus:ring-2 focus:ring-[var(--mint-accent)] search-bar">
+        </form>
+    </div>
+    */}}
+
+    <div id="results-list" class="space-y-4">
+        <p>Loading search results...</p>
+        <!-- Search results will be dynamically populated here by search.js -->
+    </div>
+</div>
+
+{{/* The script for the removed search bar is also removed */}}
+{{/*
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInputOnPage = document.getElementById('search-input-on-page');
+        const searchFormOnPage = document.getElementById('search-form-on-page');
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const queryFromUrl = urlParams.get('q') || urlParams.get('query');
+        if (queryFromUrl) {
+            searchInputOnPage.value = queryFromUrl;
+        }
+
+        searchFormOnPage.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const newQuery = searchInputOnPage.value.trim();
+            if (newQuery.length > 0) {
+                window.location.href = `/search?q=${encodeURIComponent(newQuery)}`;
+            }
+        });
+    });
+</script>
+*/}}
+{{ end }}

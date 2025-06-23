@@ -1,31 +1,96 @@
+# hugo.toml
+
 baseURL = "https://surrealmint.github.io/"
 languageCode = "en-us"
 title = "analogarden"
-theme = ""
 pygmentsCodeFences = true
 pygmentsStyle = "monokai"
+enableGitInfo = true
+relativeURLs = false
+uglyURLs = false
 
-# Main menu navigation
+# --- Top Header Menu ---
 [menu]
   [[menu.main]]
-    name = "Home"
-    url = "/"
+    name = "Workshop"
+    url = "/workshop/"
     weight = 1
   [[menu.main]]
-    name = "Blog"
-    url = "/blog/"
+    name = "Field Notes"
+    url = "/field-notes/" # Ensure your content folder is also 'field-notes'
     weight = 2
   [[menu.main]]
-    name = "Projects"
-    url = "/projects/"
+    name = "Studio"
+    url = "/studio/"
     weight = 3
-  [[menu.main]]
-    name = "About"
-    url = "/about/"
-    weight = 4
+
+  [[menu.social]]
+    name = "GitHub"
+    url = "https://github.com/surrealmint"
+    weight = 1
+
+  # --- Curated Static Sidebar Menu (for all pages) ---
+  [[menu.sidebar]] 
+    name = "From the Workshop"
+    identifier = "workshop" # A unique ID for this heading
+    weight = 1 
+
+  [[menu.sidebar]]
+    name = "RISC-y Busy-ness"
+    url = "/workshop/riscv-cpu/" 
+    parent = "workshop"
+    weight = 1
+
+  [[menu.sidebar]]
+    name = "Ohm Sweet Ohm"
+    url = "workshop/ohm-sweet-ohm/"
+    parent = "workshop"
+    weight = 2
+  
+  [[menu.sidebar]]
+    name = "Field Notes"
+    identifier = "field-notes"
+    weight = 3
+
+  [[menu.sidebar]]
+    name = "Our trip to Kodagu"
+    url = "/field-notes/coorg-trip" 
+    parent = "field-notes"
+    weight = 1
+  
+  [[menu.sidebar]]
+    name = "Writings"
+    identifier = "writings"
+    weight = 2
+
+  [[menu.sidebar]]
+    name = "The Psychology of Money"
+    url = "/studio/book-review-1/" 
+    parent = "writings"
+    weight = 1
+  
+  # Add other static sidebar entries here, e.g., direct links to sections
+  [[menu.sidebar]]
+    name = "All Logbook Entries"
+    url = "/all-entries/" # Link to the compiled list of all posts
+    weight = 1 # Place it lower in the list
 
 [params]
-  # Your name
   author = "surrealmint"
-  # A short description of you
-  description = "mechatronics undergrad"
+  description = "This is my digital garden... or analogarden if it pleases you"
+  default_logo = "/images/logo-analogarden-main.svg"
+
+# --- Required for Search & ToC ---
+[outputs]
+  home = [ "HTML", "JSON" ] # Ensure JSON output for homepage search index
+  section = [ "HTML", "RSS", "JSON" ] # Also output JSON for sections if you want section-specific search
+  taxonomy = [ "HTML", "RSS", "JSON" ] # Also output JSON for tags pages if you want tag-specific search
+
+[mediaTypes]
+  [mediaTypes."application/json"]
+    suffixes = ["json"]
+
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel = 4
+  ordered = false

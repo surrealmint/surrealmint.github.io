@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Workshop on analogarden</title>
+    <link>https://surrealmint.github.io/tags/workshop/</link>
+    <description>Recent content in Workshop on analogarden</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://surrealmint.github.io/tags/workshop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RISC-y Busy-ness</title>
+      <link>https://surrealmint.github.io/workshop/riscv-cpu/</link>
+      <pubDate>Fri, 20 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://surrealmint.github.io/workshop/riscv-cpu/</guid>
+      <description>&lt;h1 id=&#34;header-1&#34;&gt;Header 1!&lt;/h1&gt;&#xA;&lt;p&gt;It isn&amp;rsquo;t working i think :&lt;/p&gt;&#xA;&lt;h1 id=&#34;header-1-as-well&#34;&gt;Header 1 as well&lt;/h1&gt;&#xA;&lt;h2 id=&#34;header-2&#34;&gt;header 2&lt;/h2&gt;&#xA;&lt;h3 id=&#34;header-3&#34;&gt;header 3&lt;/h3&gt;&#xA;&lt;h1 id=&#34;header-1-again&#34;&gt;header 1 again!&lt;/h1&gt;</description>
+    </item>
+  </channel>
+</rss>

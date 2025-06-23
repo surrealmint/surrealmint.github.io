@@ -1,0 +1,45 @@
+{{ define "main" }}
+<div class="all-entries-page">
+    <h1 class="text-4xl font-bold mb-8">{{ .Title }}</h1>
+    <div class="posts-grid grid gap-6">
+        {{/* Define the combined collection of pages specifically for this layout */}}
+        {{ $allRelevantPosts := (where .Site.RegularPages "Type" "in" (slice "workshop" "field-notes" "studio")).ByDate.Reverse }}
+        
+        {{/* Create a paginator for this custom collection */}}
+        {{ $combinedPaginator := .Paginate $allRelevantPosts }}
+
+        {{ if not $combinedPaginator.Pages }}
+            <p class="text-gray-500 dark:text-gray-400">No logbook entries found across all sections yet. Start adding posts!</p>
+        {{ else }}
+            {{ range $combinedPaginator.Pages }}
+            <article class="p-5 rounded-lg shadow-md bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700"> <!-- Padding changed to p-5 -->
+                <h2 class="text-3xl font-bold mb-2">
+                    <a href="{{ .Permalink }}" class="post-title-link"> <!-- Applied new color class for text and hover -->
+                        {{ .Title }}
+                        <span class="absolute left-0 bottom-[-5px] w-0 h-0.5 bg-current transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </h2>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                    Published: {{ .Date.Format "January 2, 2006" }}
+                    {{ with .Section }}
+                        | Section: <a href="/{{ . | urlize }}/" class="text-mint-accent hover:underline">{{ . | humanize }}</a> <!-- Changed to text-mint-accent -->
+                    {{ end }}
+                </p>
+                {{ with .Params.tags }}
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        {{ range . }}
+                            <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="inline-block bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-semibold px-2.5 py-0.5 rounded-full hover:bg-mint-accent hover:text-dark-bg-main transition-colors">#{{ . }}</a>
+                        {{ end }}
+                    </div>
+                {{ end }}
+                <p class="text-base text-gray-800 dark:text-gray-200 mb-4">{{ .Summary | plainify | truncate 200 }}...</p>
+                <a href="{{ .Permalink }}" class="text-mint-accent text-sm font-semibold hover:underline">Read more &rarr;</a>
+            </article>
+            {{ end }}
+        {{ end }}
+    </div>
+
+    <!-- Pagination Partial: Pass the combined paginator object -->
+    {{ partial "pagination.html" $combinedPaginator }}
+</div>
+{{ end }}

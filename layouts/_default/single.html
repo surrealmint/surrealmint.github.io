@@ -1,0 +1,49 @@
+{{ define "main" }}
+<article class="prose dark:prose-invert max-w-none">
+    <div class="flex flex-col md:flex-row justify-between items-start mb-8">
+        <div class="flex-grow md:pr-8">
+            <h1 class="text-4xl font-bold mb-2 post-heading-color">{{ .Title }}</h1>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                Published: {{ .Date.Format "January 2, 2006" }}
+            </p>
+            {{ with .Section }}
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                    Section: <a href="/{{ . | urlize }}/" class="text-blue-500 hover:underline">{{ . | humanize }}</a> <!-- Fixed: .Section changed to . -->
+                </p>
+            {{ end }}
+            {{ with .Params.tags }}
+                <div class="flex flex-wrap gap-2 mb-4">
+                    {{ range . }}
+                        <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="inline-block bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-semibold px-2.5 py-0.5 rounded-full hover:bg-mint-accent hover:text-dark-bg-main transition-colors">#{{ . }}</a>
+                    {{ end }}
+                </div>
+            {{ end }}
+        </div>
+
+        <!-- Right Column for Page Logo and TOC -->
+        <aside class="w-full md:w-auto md:min-w-[200px] md:max-w-[280px] mt-8 md:mt-0 md:ml-8 flex-shrink-0">
+            {{ with .Params.logo }}
+                <div class="mb-8 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md flex justify-center items-center border border-gray-200 dark:border-gray-700">
+                    <img src="{{ . | absURL }}" alt="{{ $.Title }} Logo" class="max-w-[150px] max-h-[150px] object-contain">
+                </div>
+            {{ end }}
+
+            {{ if .TableOfContents }}
+            <div class="post-toc-container bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 border border-gray-200 dark:border-gray-700">
+                <h4 class="font-bold text-lg mb-2">In This Article</h4>
+                <div class="post-toc-list">
+                    {{ .TableOfContents }}
+                </div>
+            </div>
+            {{ end }}
+        </aside>
+    </div>
+
+    <div class="main-post-content">
+        {{/* Hugo's built-in 'prose' styling will apply here, controlling H2, H3, etc. */}}
+        {{ .Content }}
+    </div>
+
+    {{/* You might add navigation for next/previous posts here */}}
+</article>
+{{ end }}

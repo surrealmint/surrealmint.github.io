@@ -1,0 +1,30 @@
+<nav class="sidebar-nav">
+    <div class="site-title mb-8 flex items-center space-x-2">
+        {{ if .Site.Params.default_logo }}
+            <img src="/images/cpu.png" alt="{{ .Site.Title }} Logo" class="h-8 w-8 object-contain">
+        {{ end }}
+        <a href="/" class="site-title-link text-base font-bold font-inter">
+            {{ .Site.Title }}
+        </a>
+    </div>
+
+    <ul class="mb-8 space-y-2">
+        <li class="mb-2"><a href="/" class="text-sm font-inter sidebar-link-item">Home</a></li>
+        
+        {{/* Render sidebar menu items with dividers and new hover effect */}}
+        {{ range .Site.Menus.sidebar }}
+            {{ if not .HasChildren }}
+                <li class="mb-2"><a href="{{ .URL }}" class="text-sm font-inter sidebar-link-item">{{ .Name }}</a></li>
+            {{ else }}
+                <li class="mb-2 sidebar-category-item"> <!-- Apply divider style to the list item containing the heading -->
+                    <h4 class="text-base font-bold mt-4 mb-2 font-inter sidebar-category-heading">{{ .Name }}</h4>
+                    <ul class="ml-4 space-y-1">
+                        {{ range .Children }}
+                            <li><a href="{{ .URL }}" class="text-sm font-inter sidebar-link-item">{{ .Name }}</a></li>
+                        {{ end }}
+                    </ul>
+                </li>
+            {{ end }}
+        {{ end }}
+    </ul>
+</nav>

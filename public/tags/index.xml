@@ -2,10 +2,60 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on analogarden</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://surrealmint.github.io/tags/</link>
     <description>Recent content in Tags on analogarden</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Jun 2025 10:00:00 +0530</lastBuildDate>
+    <atom:link href="https://surrealmint.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Book Review</title>
+      <link>https://surrealmint.github.io/tags/book-review/</link>
+      <pubDate>Mon, 23 Jun 2025 10:00:00 +0530</pubDate>
+      <guid>https://surrealmint.github.io/tags/book-review/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Finance</title>
+      <link>https://surrealmint.github.io/tags/finance/</link>
+      <pubDate>Mon, 23 Jun 2025 10:00:00 +0530</pubDate>
+      <guid>https://surrealmint.github.io/tags/finance/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Analog</title>
+      <link>https://surrealmint.github.io/tags/analog/</link>
+      <pubDate>Mon, 23 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://surrealmint.github.io/tags/analog/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Risc-V</title>
+      <link>https://surrealmint.github.io/tags/risc-v/</link>
+      <pubDate>Fri, 20 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://surrealmint.github.io/tags/risc-v/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Workshop</title>
+      <link>https://surrealmint.github.io/tags/workshop/</link>
+      <pubDate>Fri, 20 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://surrealmint.github.io/tags/workshop/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Field Notes</title>
+      <link>https://surrealmint.github.io/tags/field-notes/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://surrealmint.github.io/tags/field-notes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mountain Climbing</title>
+      <link>https://surrealmint.github.io/tags/mountain-climbing/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://surrealmint.github.io/tags/mountain-climbing/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

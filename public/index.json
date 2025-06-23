@@ -1,0 +1,43 @@
+[
+    
+      
+      {
+        "uri": "https://surrealmint.github.io/studio/book-review-1/",
+        "title": "The Psychology of Money: A Book Review",
+        "tags": ["book review","finance"],
+        "content": "My ponderings on the book.\nKey Takeaways This section will discuss the main points.\nFinancial Habits A sub-point about habits.\nSmall Changes Further detail.\nAuthor\u0026rsquo;s Insights Diving deeper into Morgan Housel\u0026rsquo;s perspective.\n"
+      }
+    
+      ,
+      {
+        "uri": "https://surrealmint.github.io/workshop/ohm-sweet-ohm/",
+        "title": "Ohm Sweet Ohm",
+        "tags": ["analog"],
+        "content": "My analog project.\n"
+      }
+    
+      ,
+      {
+        "uri": "https://surrealmint.github.io/workshop/riscv-cpu/",
+        "title": "RISC-y Busy-ness",
+        "tags": ["risc-v","workshop"],
+        "content": "Header 1! It isn\u0026rsquo;t working i think :\nHeader 1 as well header 2 header 3 header 1 again! "
+      }
+    
+      ,
+      {
+        "uri": "https://surrealmint.github.io/field-notes/coorg-trip/",
+        "title": "Coorg Trip made it out the GC",
+        "tags": ["mountain climbing","field notes"],
+        "content": ""
+      }
+    
+      ,
+      {
+        "uri": "https://surrealmint.github.io/about/",
+        "title": "About Me",
+        "tags": [],
+        "content": "Hi there! I\u0026rsquo;m surrealmint, and this is my analogarden. I\u0026rsquo;m passionate about [Your interests, e.g., coding, design, photography, electronics]. Here, I share my thoughts, projects, and insights from my workshop, field notes, and studio.\n"
+      }
+    
+]

@@ -1,0 +1,11 @@
+[
+    {{ range $index, $page := (where .Site.RegularPages "Type" "in" (slice "page" "workshop" "field-notes" "studio" "articles" "micro-projects")) }}
+      {{ if gt $index 0 }},{{ end }}
+      {
+        "uri": "{{ $page.Permalink }}",
+        "title": "{{ $page.Title }}",
+        "tags": [{{ range $tindex, $tag := $page.Params.tags }}{{ if gt $tindex 0 }},{{ end }}"{{ $tag }}"{{ end }}],
+        "content": {{ $page.Plain | jsonify }}
+      }
+    {{ end }}
+]

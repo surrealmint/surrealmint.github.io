@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en-us" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Psychology of Money: A Book Review | analogarden</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@700&family=Inter:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+         
+        :root {
+            --mint-accent: #6EE7B7;
+            --light-bg-main: #fdf9ee; 
+            --light-bg-sidebar: #eee8d5; 
+            --light-text: #181818;  
+            --dark-bg-main: #181818;  
+            --dark-bg-sidebar: #1f1f1f;  
+            --dark-text: #fdf9ee;  
+            --post-heading-color: #f4b9b2;  
+             
+            --light-sidebar-hover: #e0d9c1;  
+            --dark-sidebar-hover: #171717;  
+        }
+         
+        body {
+            font-family: 'Inter', sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";  
+            font-size: 17.6px;
+            transition: background-color 0.3s, color 0.3s;
+            overflow: hidden;  
+        }
+         
+        h1, h2, h3, h4, h5, h6 { 
+            font-family: 'Gabarito', sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-weight: 700; 
+        }
+
+         
+        body.light { 
+            background-color: var(--light-bg-main); 
+            color: var(--light-text);  
+        }
+        body.dark { 
+            background-color: var(--dark-bg-main); 
+            color: var(--dark-text);  
+        }
+
+         
+         
+         
+        main p, main span, main div, 
+        .prose p, .prose li, .prose strong, .prose em, .prose code, 
+        .posts-list article p, .posts-list article span, .posts-list article div { 
+            color: inherit !important;  
+        }
+
+         
+        .flex, .w-64, .flex-1, .max-w-5xl, 
+        header, main, footer, article, section, div, p, span, ul, li {
+            background-color: transparent; 
+        }
+
+         
+         
+        .sidebar-container { 
+            background-color: var(--light-bg-sidebar); 
+        }
+        body.dark .sidebar-container { 
+            background-color: var(--dark-bg-sidebar); 
+        }
+         
+        .recent-posts article, .section-list-page article, #results-list article, .post-toc-container, .post-logo-container {
+            background-color: var(--light-bg-sidebar);  
+        }
+        body.dark .recent-posts article, body.dark .section-list-page article, body.dark #results-list article, body.dark .post-toc-container, body.dark .post-logo-container {
+            background-color: var(--dark-bg-sidebar);  
+        }
+         
+        .search-bar {
+            background-color: var(--light-bg-sidebar);
+            color: var(--light-text);  
+        }
+        body.dark .search-bar {
+            background-color: var(--dark-bg-sidebar);
+            color: var(--dark-text);  
+        }
+
+         
+        a {  
+            color: var(--mint-accent);  
+            text-decoration: none;  
+            transition: color 0.3s ease;  
+        }
+
+         
+        .post-title-link {
+            color: var(--post-heading-color) !important;  
+            position: relative;
+            text-decoration: none;  
+        }
+        .post-title-link:after {  
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            left: 0;
+            background: var(--mint-accent);  
+            transition: width 0.3s ease;
+        }
+        .post-title-link:hover {
+            color: var(--mint-accent) !important;  
+        }
+        .post-title-link:hover:after {
+            width: 100%;  
+        }
+
+         
+        main a:not(.post-title-link) {  
+            position: relative;
+        }
+        main a:not(.post-title-link):after {  
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            left: 0;
+            background: var(--mint-accent);
+            transition: width 0.3s ease;
+        }
+        main a:not(.post-title-link):hover:after {
+            width: 100%;
+        }
+
+         
+        .sidebar-nav ul li a {  
+            display: block;  
+            padding: 0.5rem 0.5rem;  
+            border-radius: 0.25rem;  
+            text-decoration: none;  
+            color: inherit;  
+            opacity: 0.7;  
+            transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+        }
+        .sidebar-nav ul li a:hover {
+            opacity: 1;  
+            color: var(--mint-accent);  
+            background-color: var(--light-sidebar-hover);  
+        }
+        body.dark .sidebar-nav ul li a:hover {
+            background-color: var(--dark-sidebar-hover);  
+        }
+         
+        .sidebar-container .site-title-link {
+            opacity: 1;  
+            background-color: transparent !important;  
+        }
+        .sidebar-container .site-title-link:hover {
+            color: inherit;  
+        }
+
+         
+        .header-nav-link-item {  
+            display: inline-block;  
+            padding: 0.5rem 0.75rem;  
+            border-radius: 0.25rem;
+            text-decoration: none;
+            color: inherit;  
+            opacity: 0.8;  
+            transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+        }
+        .header-nav-link-item:hover {
+            opacity: 1;
+            color: var(--mint-accent);
+            background-color: var(--light-sidebar-hover);
+        }
+        body.dark .header-nav-link-item:hover {
+            background-color: var(--dark-sidebar-hover);
+        }
+
+
+         
+        .sidebar-category-heading {
+            border-bottom: 1px solid #e0e0e0;  
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.75rem;  
+        }
+        body.dark .sidebar-category-heading {
+            border-color: #2a2a2a;  
+        }
+
+
+         
+        .header-border { border-color: #e0e0e0; }
+        body.dark .header-border { border-color: #2a2a2a; }
+
+         
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #1A1A1A;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #preloader-text-container {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #E0E0E0;
+        }
+        #preloader-text-container .mint-color {
+            color: var(--mint-accent);
+        }
+
+        .blinking-cursor {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { border-right-color: transparent; }
+            50% { border-right: 2px solid #E0E0E0; }
+        }
+
+         
+        .intro-heading-underline {
+            display: inline-block;
+            padding-bottom: 5px;
+            border-bottom: 5px solid var(--mint-accent);
+        }
+
+         
+        #search-results.border {
+            border-color: #dcd5c1;  
+        }
+        body.dark #search-results.border {
+            border-color: #2a2a2a;  
+        }
+
+         
+        .post-toc-container {
+            border: 1px solid #e0e0e0;  
+            padding: 1rem;
+            margin-bottom: 1.5rem;  
+             
+        }
+        body.dark .post-toc-container {
+            border-color: #2a2a2a;  
+        }
+
+        .post-toc-container h4 {  
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+            color: inherit;
+        }
+
+        .post-toc-list ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        .post-toc-list ul ul {
+            padding-left: 1rem;
+        }
+
+        .post-toc-list li a {
+            display: block;
+            padding: 0.25rem 0;
+            font-size: 0.9375rem;
+            color: inherit;  
+            opacity: 0.8;
+            transition: opacity 0.2s ease-in-out;
+            text-decoration: none;
+        }
+
+        .post-toc-list li a:hover {
+            opacity: 1;
+            color: var(--mint-accent);
+            text-decoration: underline;
+        }
+
+         
+        .main-post-content {
+             
+        }
+         
+        .main-post-content .prose h1, .main-post-content .prose h2, 
+        .main-post-content .prose h3, .main-post-content .prose h4, 
+        .main-post-content .prose h5, .main-post-content .prose h6 {
+            font-family: 'Gabarito', sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-weight: 700 !important;  
+            color: inherit;  
+            margin-top: 1.5em;  
+            margin-bottom: 0.75em;  
+        }
+
+         
+        .main-post-content .prose h1 { font-size: 2.25em; }  
+        .main-post-content .prose h2 { font-size: 1.875em; }  
+        .main-post-content .prose h3 { font-size: 1.5em; }   
+        .main-post-content .prose h4 { font-size: 1.25em; }  
+        .main-post-content .prose h5 { font-size: 1.125em; }  
+        .main-post-content .prose h6 { font-size: 1em; }     
+
+         
+        .prose {
+            color: inherit;  
+        }
+        .prose a {
+            color: var(--mint-accent);  
+            text-decoration: none;
+        }
+        .prose a:hover {
+            text-decoration: underline;  
+        }
+    </style>
+</head>
+<body class="light">
+
+    
+    <div id="preloader">
+        <div id="preloader-text-container">
+            <span id="preloader-text"></span><span class="blinking-cursor">&nbsp;</span>
+        </div>
+    </div>
+
+    <div class="flex">
+        <aside class="w-64 flex-shrink-0 hidden md:block">
+            <div class="fixed top-0 left-0 h-full w-64 p-6 overflow-y-auto sidebar-container">
+                <nav class="sidebar-nav">
+    <div class="site-title mb-8 flex items-center space-x-2">
+        
+            <img src="/images/cpu.png" alt="analogarden Logo" class="h-8 w-8 object-contain">
+        
+        <a href="/" class="site-title-link text-base font-bold font-inter">
+            analogarden
+        </a>
+    </div>
+
+    <ul class="mb-8 space-y-2">
+        <li class="mb-2"><a href="/" class="text-sm font-inter sidebar-link-item">Home</a></li>
+        
+        
+        
+            
+                <li class="mb-2"><a href="/all-entries/" class="text-sm font-inter sidebar-link-item">All Logbook Entries</a></li>
+            
+        
+            
+                <li class="mb-2 sidebar-category-item"> 
+                    <h4 class="text-base font-bold mt-4 mb-2 font-inter sidebar-category-heading">From the Workshop</h4>
+                    <ul class="ml-4 space-y-1">
+                        
+                            <li><a href="/workshop/riscv-cpu/" class="text-sm font-inter sidebar-link-item">RISC-y Busy-ness</a></li>
+                        
+                            <li><a href="workshop/ohm-sweet-ohm/" class="text-sm font-inter sidebar-link-item">Ohm Sweet Ohm</a></li>
+                        
+                    </ul>
+                </li>
+            
+        
+            
+                <li class="mb-2 sidebar-category-item"> 
+                    <h4 class="text-base font-bold mt-4 mb-2 font-inter sidebar-category-heading">Writings</h4>
+                    <ul class="ml-4 space-y-1">
+                        
+                            <li><a href="/studio/book-review-1/" class="text-sm font-inter sidebar-link-item">The Psychology of Money</a></li>
+                        
+                    </ul>
+                </li>
+            
+        
+            
+                <li class="mb-2 sidebar-category-item"> 
+                    <h4 class="text-base font-bold mt-4 mb-2 font-inter sidebar-category-heading">Field Notes</h4>
+                    <ul class="ml-4 space-y-1">
+                        
+                            <li><a href="/field-notes/coorg-trip" class="text-sm font-inter sidebar-link-item">Our trip to Kodagu</a></li>
+                        
+                    </ul>
+                </li>
+            
+        
+    </ul>
+</nav>
+
+            </div>
+        </aside>
+
+        <div class="flex-1 min-w-0">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <header class="flex items-center justify-between py-6 border-b header-border">
+    <div class="flex-1 max-w-md relative">
+        <form id="search-form" role="search" aria-label="search-form">
+            <input type="search" id="search-input" placeholder="Search posts..." autocomplete="off" class="w-full rounded-md py-2 pl-4 pr-10 focus:ring-2 focus:ring-[var(--mint-accent)] search-bar">
+        </form>
+        
+        <div id="search-results" class="absolute mt-2 w-full rounded-md shadow-lg z-10 hidden"></div>
+    </div>
+    <div class="flex items-center space-x-6">
+        <nav class="hidden md:flex items-center space-x-6">
+            
+                <a href="/workshop/" class="header-nav-link-item">Workshop</a> 
+            
+                <a href="/field-notes/" class="header-nav-link-item">Field Notes</a> 
+            
+                <a href="/studio/" class="header-nav-link-item">Studio</a> 
+            
+        </nav>
+        <div class="flex items-center space-x-4 pl-6 border-l header-border">
+            <a href="https://github.com/surrealmint" target="_blank" rel="noopener noreferrer" title="GitHub" class="text-inherit opacity-70 hover:opacity-100 hover:text-[var(--mint-accent)]">
+                <svg class="w-5 h-5" role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+            <button id="theme-toggle" class="p-2 rounded-md text-inherit opacity-70 hover:opacity-100 hover:text-[var(--mint-accent)]">
+                <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 6.464l.707.707a1 1 0 001.414-1.414l-.707-.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z"></path></svg>
+                <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            </button>
+        </div>
+    </div>
+</header>
+<hr>
+
+                <main id="content" class="py-8">
+                    
+<article class="prose dark:prose-invert max-w-none">
+    <div class="flex flex-col md:flex-row justify-between items-start mb-8">
+        <div class="flex-grow md:pr-8">
+            <h1 class="text-4xl font-bold mb-2 post-heading-color">The Psychology of Money: A Book Review</h1>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                Published: June 23, 2025
+            </p>
+            
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                    Section: <a href="/studio/" class="text-blue-500 hover:underline">Studio</a> 
+                </p>
+            
+            
+                <div class="flex flex-wrap gap-2 mb-4">
+                    
+                        <a href="/tags/book-review" class="inline-block bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-semibold px-2.5 py-0.5 rounded-full hover:bg-mint-accent hover:text-dark-bg-main transition-colors">#book review</a>
+                    
+                        <a href="/tags/finance" class="inline-block bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-semibold px-2.5 py-0.5 rounded-full hover:bg-mint-accent hover:text-dark-bg-main transition-colors">#finance</a>
+                    
+                </div>
+            
+        </div>
+
+        
+        <aside class="w-full md:w-auto md:min-w-[200px] md:max-w-[280px] mt-8 md:mt-0 md:ml-8 flex-shrink-0">
+            
+
+            
+            <div class="post-toc-container bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 border border-gray-200 dark:border-gray-700">
+                <h4 class="font-bold text-lg mb-2">In This Article</h4>
+                <div class="post-toc-list">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#key-takeaways">Key Takeaways</a>
+      <ul>
+        <li><a href="#financial-habits">Financial Habits</a>
+          <ul>
+            <li><a href="#small-changes">Small Changes</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#authors-insights">Author&rsquo;s Insights</a></li>
+  </ul>
+</nav>
+                </div>
+            </div>
+            
+        </aside>
+    </div>
+
+    <div class="main-post-content">
+        
+        <p>My ponderings on the book.</p>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<p>This section will discuss the main points.</p>
+<h3 id="financial-habits">Financial Habits</h3>
+<p>A sub-point about habits.</p>
+<h4 id="small-changes">Small Changes</h4>
+<p>Further detail.</p>
+<h2 id="authors-insights">Author&rsquo;s Insights</h2>
+<p>Diving deeper into Morgan Housel&rsquo;s perspective.</p>
+
+    </div>
+
+    
+</article>
+
+                </main>
+                <footer class="py-8 text-center text-gray-500 dark:text-gray-400 border-t-2 border-gray-200 dark:border-gray-700">
+    <p>&copy; 2025 surrealmint. All rights reserved.</p>
+    <p class="mt-2 text-sm">
+        Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener" class="underline hover:text-blue-500">Hugo</a> &amp;
+        Built with <a href="https://tailwindcss.com" target="_blank" rel="noopener" class="underline hover:text-blue-500">TailwindCSS</a>.
+    </p>
+    
+</footer>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const bodyElement = document.body;
+            const lightIcon = document.getElementById('theme-toggle-light-icon');
+            const darkIcon = document.getElementById('theme-toggle-dark-icon');
+            function applyTheme(theme) {
+                const isDark = theme === 'dark';
+                bodyElement.classList.toggle('dark', isDark); bodyElement.classList.toggle('light', !isDark);
+                if (lightIcon && darkIcon) {
+                    lightIcon.classList.toggle('hidden', !isDark);
+                    darkIcon.classList.toggle('hidden', isDark);
+                }
+            }
+            function setInitialTheme() {
+                const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                applyTheme(savedTheme);
+            }
+            setInitialTheme();
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    const newTheme = bodyElement.classList.contains('dark') ? 'light' : 'dark';
+                    applyTheme(newTheme); localStorage.setItem('theme', newTheme);
+                });
+            }
+
+            
+            const preloader = document.getElementById('preloader');
+            const preloaderText = document.getElementById('preloader-text');
+            const targetFullText = '$ mkdir nlogrdn';
+            const prefixText = '$ mkdir ';
+            const mintColorText = 'nlogrdn';
+            const mintColorStartIndex = prefixText.length;
+
+            let i = 0;
+            let isPageLoaded = false;
+            let isTypingComplete = false;
+            const postTypingDelay = 1000;
+            const preloaderShownKey = 'preloaderShown'; 
+
+            
+            function hidePreloader() {
+                if (preloader) {
+                    preloader.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+
+            
+            if (sessionStorage.getItem(preloaderShownKey) === 'true') {
+                
+                hidePreloader();
+            } else {
+                
+                function typeWriter() {
+                    if (i < targetFullText.length) {
+                        let currentTypedHTML = '';
+                        const typedSoFar = targetFullText.substring(0, i + 1);
+
+                        if (i < mintColorStartIndex) {
+                            currentTypedHTML = typedSoFar;
+                        } else {
+                            const prefixTyped = targetFullText.substring(0, mintColorStartIndex);
+                            const mintTyped = targetFullText.substring(mintColorStartIndex, i + 1);
+                            currentTypedHTML = prefixTyped + `<span class="mint-color">` + mintTyped + `</span>`;
+                        }
+
+                        preloaderText.innerHTML = currentTypedHTML;
+                        i++;
+                        setTimeout(typeWriter, 150);
+                    } else {
+                        isTypingComplete = true;
+                        const finalPrefix = targetFullText.substring(0, mintColorStartIndex);
+                        const finalMintText = targetFullText.substring(mintColorStartIndex);
+                        preloaderText.innerHTML = finalPrefix + `<span class="mint-color">` + finalMintText + `</span>`;
+
+                        
+                        sessionStorage.setItem(preloaderShownKey, 'true');
+
+                        
+                        setTimeout(hidePreloader, postTypingDelay);
+                    }
+                }
+
+                if (preloaderText) {
+                    typeWriter();
+                }
+
+                
+                window.addEventListener('load', () => {
+                    isPageLoaded = true;
+                    if (sessionStorage.getItem(preloaderShownKey) === 'true') {
+                         hidePreloader();
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="/js/search.js"></script> 
+</body>
+</html>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>All Logbook Entries on analogarden</title>
+    <link>https://surrealmint.github.io/all-entries/</link>
+    <description>Recent content in All Logbook Entries on analogarden</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://surrealmint.github.io/all-entries/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
