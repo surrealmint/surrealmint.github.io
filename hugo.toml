@@ -93,4 +93,4 @@ uglyURLs = false
 [markup.tableOfContents]
   startLevel = 2
   endLevel = 4
-  ordered = false
+  ordered = false 
