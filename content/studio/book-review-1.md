@@ -3,6 +3,7 @@ title: "The Psychology of Money: A Book Review"
 date: 2025-06-23T10:00:00+05:30 # Added full date format for consistency
 draft: false
 tags: ["book review", "finance"] # Added a second tag for testing tag pages
+logo: "/images/coin.png"
 ---
 
 My ponderings on the book.

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" class="scroll-smooth">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mountain Climbing | analogarden</title>
@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@700&family=Inter:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
+        
          
         :root {
             --mint-accent: #6EE7B7;
@@ -185,15 +186,14 @@
         }
 
 
-         
-        .sidebar-category-heading {
-            border-bottom: 1px solid #e0e0e0;  
-            padding-bottom: 0.5rem;
-            margin-bottom: 0.75rem;  
-        }
-        body.dark .sidebar-category-heading {
-            border-color: #2a2a2a;  
-        }
+ 
+.sidebar-category-heading {
+    border-bottom: 1px solid #d1d5db;  
+     
+}
+body.dark .sidebar-category-heading {
+    border-color: #4b5563;  
+}
 
 
          
@@ -244,17 +244,22 @@
             border-color: #2a2a2a;  
         }
 
-         
-        .post-toc-container {
-            border: 1px solid #e0e0e0;  
-            padding: 1rem;
-            margin-bottom: 1.5rem;  
-             
-        }
-        body.dark .post-toc-container {
-            border-color: #2a2a2a;  
-        }
+ 
+.post-toc-container {
+    border: 1px solid #e0e0e0;  
+    padding: 1rem;
+    margin-bottom: 1.5rem;  
+}
 
+ 
+body.light .post-toc-container {
+    background-color: #eee8d5;  
+}
+ 
+
+body.dark .post-toc-container {
+    border-color: #2a2a2a;  
+}
         .post-toc-container h4 {  
             font-family: 'Inter', sans-serif;
             font-weight: 700;
@@ -277,52 +282,66 @@
             display: block;
             padding: 0.25rem 0;
             font-size: 0.9375rem;
-            color: inherit;  
             opacity: 0.8;
-            transition: opacity 0.2s ease-in-out;
+            transition: opacity 0.2s ease-in-out, color 0.2s ease-in-out;  
             text-decoration: none;
+        }
+         
+        body.light .post-toc-container .post-toc-list li a {
+            color: var(--light-text) !important;  
+        }
+        body.dark .post-toc-container .post-toc-list li a {
+            color: var(--dark-text) !important;  
         }
 
         .post-toc-list li a:hover {
             opacity: 1;
-            color: var(--mint-accent);
+            color: var(--mint-accent) !important;  
             text-decoration: underline;
         }
+         
+        .post-toc-list li a:active { 
+            color: var(--mint-accent) !important;
+        }
+ 
+        
+         
+        .prose h1, 
+        .prose h2, 
+        .prose h3, 
+        .prose h4, 
+        .prose h5, 
+        .prose h6 {
+            font-family: 'Gabarito', sans-serif !important;
+            font-weight: 700 !important;
+            color: inherit !important; 
+            margin-top: 1.5em;
+            margin-bottom: 0.75em;
+        }
 
          
-        .main-post-content {
-             
-        }
-         
-        .main-post-content .prose h1, .main-post-content .prose h2, 
-        .main-post-content .prose h3, .main-post-content .prose h4, 
-        .main-post-content .prose h5, .main-post-content .prose h6 {
-            font-family: 'Gabarito', sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-            font-weight: 700 !important;  
-            color: inherit;  
-            margin-top: 1.5em;  
-            margin-bottom: 0.75em;  
-        }
-
-         
-        .main-post-content .prose h1 { font-size: 2.25em; }  
-        .main-post-content .prose h2 { font-size: 1.875em; }  
-        .main-post-content .prose h3 { font-size: 1.5em; }   
-        .main-post-content .prose h4 { font-size: 1.25em; }  
-        .main-post-content .prose h5 { font-size: 1.125em; }  
-        .main-post-content .prose h6 { font-size: 1em; }     
+        .prose h1 { font-size: 3rem !important; }
+        .prose h2 { font-size: 2rem !important; }
+        .prose h3 { font-size: 1.75rem !important; }
+        .prose h4 { font-size: 1.5rem !important; }
+        .prose h5 { font-size: 1.125rem !important; }
+        .prose h6 { font-size: 1rem !important; }
 
          
         .prose {
-            color: inherit;  
+            color: inherit;
         }
         .prose a {
-            color: var(--mint-accent);  
+            color: var(--mint-accent);
             text-decoration: none;
         }
         .prose a:hover {
-            text-decoration: underline;  
+            text-decoration: underline;
         }
+     
+.main-post-content {
+    margin-top: 0 !important;
+}    
     </style>
 </head>
 <body class="light">
@@ -351,41 +370,100 @@
         <li class="mb-2"><a href="/" class="text-sm font-inter sidebar-link-item">Home</a></li>
         
         
+            
+            
+
+            
+                <li class="mb-2">
+                    
+                    <a href="/all-entries/" class="text-sm font-inter sidebar-link-item">
+                        
+                        <div class="flex items-center">
+                            
+                            
+                            <span>All Logbook Entries</span>
+                        </div>
+                    </a>
+                </li>
+            
         
             
-                <li class="mb-2"><a href="/all-entries/" class="text-sm font-inter sidebar-link-item">All Logbook Entries</a></li>
             
-        
+
             
-                <li class="mb-2 sidebar-category-item"> 
+                <li class="mb-2 sidebar-category-item">
                     <h4 class="text-base font-bold mt-4 mb-2 font-inter sidebar-category-heading">From the Workshop</h4>
                     <ul class="ml-4 space-y-1">
                         
-                            <li><a href="/workshop/riscv-cpu/" class="text-sm font-inter sidebar-link-item">RISC-y Busy-ness</a></li>
+                            
+                            
+                            <li>
+                                <a href="/workshop/riscv-cpu/" class="text-sm font-inter sidebar-link-item">
+                                    <div class="flex items-center">
+                                        
+                                            <img src="http://localhost:1313/images/chip.png" alt="RISC-y Busy-ness Logo" class="w-5 h-5 object-contain mr-2 flex-shrink-0">
+                                        
+                                        <span>RISC-y Busy-ness</span>
+                                    </div>
+                                </a>
+                            </li>
                         
-                            <li><a href="workshop/ohm-sweet-ohm/" class="text-sm font-inter sidebar-link-item">Ohm Sweet Ohm</a></li>
+                            
+                            
+                            <li>
+                                <a href="workshop/ohm-sweet-ohm/" class="text-sm font-inter sidebar-link-item">
+                                    <div class="flex items-center">
+                                        
+                                        <span>Ohm Sweet Ohm</span>
+                                    </div>
+                                </a>
+                            </li>
                         
                     </ul>
                 </li>
             
         
             
-                <li class="mb-2 sidebar-category-item"> 
+            
+
+            
+                <li class="mb-2 sidebar-category-item">
                     <h4 class="text-base font-bold mt-4 mb-2 font-inter sidebar-category-heading">Writings</h4>
                     <ul class="ml-4 space-y-1">
                         
-                            <li><a href="/studio/book-review-1/" class="text-sm font-inter sidebar-link-item">The Psychology of Money</a></li>
+                            
+                            
+                            <li>
+                                <a href="/studio/book-review-1/" class="text-sm font-inter sidebar-link-item">
+                                    <div class="flex items-center">
+                                        
+                                        <span>The Psychology of Money</span>
+                                    </div>
+                                </a>
+                            </li>
                         
                     </ul>
                 </li>
             
         
             
-                <li class="mb-2 sidebar-category-item"> 
+            
+
+            
+                <li class="mb-2 sidebar-category-item">
                     <h4 class="text-base font-bold mt-4 mb-2 font-inter sidebar-category-heading">Field Notes</h4>
                     <ul class="ml-4 space-y-1">
                         
-                            <li><a href="/field-notes/coorg-trip" class="text-sm font-inter sidebar-link-item">Our trip to Kodagu</a></li>
+                            
+                            
+                            <li>
+                                <a href="/field-notes/coorg-trip" class="text-sm font-inter sidebar-link-item">
+                                    <div class="flex items-center">
+                                        
+                                        <span>Our trip to Kodagu</span>
+                                    </div>
+                                </a>
+                            </li>
                         
                     </ul>
                 </li>
@@ -393,7 +471,6 @@
         
     </ul>
 </nav>
-
             </div>
         </aside>
 
@@ -430,7 +507,12 @@
 </header>
 <hr>
 
-                <main id="content" class="py-8">
+                
+                
+                
+                    
+                
+                <main id="content" class="py-1">
                     
 <div class="section-list-page">
     <h1 class="text-4xl font-bold mb-8">Mountain Climbing</h1>
@@ -438,7 +520,7 @@
         
             <article class="p-5 rounded-lg shadow-md bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700"> 
                 <h2 class="text-3xl font-bold mb-2">
-                    <a href="https://surrealmint.github.io/field-notes/coorg-trip/" class="post-title-link"> 
+                    <a href="http://localhost:1313/field-notes/coorg-trip/" class="post-title-link"> 
                         Coorg Trip made it out the GC
                         <span class="absolute left-0 bottom-[-5px] w-0 h-0.5 bg-current transition-all duration-300 group-hover:w-full"></span>
                     </a>
@@ -459,7 +541,7 @@
                     </div>
                 
                 <p class="text-base text-gray-800 dark:text-gray-200 mb-4">...</p>
-                <a href="https://surrealmint.github.io/field-notes/coorg-trip/" class="text-mint-accent text-sm font-semibold hover:underline">Read more &rarr;</a>
+                <a href="http://localhost:1313/field-notes/coorg-trip/" class="text-mint-accent text-sm font-semibold hover:underline">Read more &rarr;</a>
             </article>
         
     </div>

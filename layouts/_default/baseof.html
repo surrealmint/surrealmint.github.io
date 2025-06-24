@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@700&family=Inter:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
+        
         /* --- Color & Font Definitions --- */
         :root {
             --mint-accent: #6EE7B7;
@@ -119,10 +120,11 @@
             width: 100%; /* Underline expands on hover */
         }
 
-        /* Other links in main content area (`<main>`) use this specific hover effect */
-        main a:not(.post-title-link) { /* Exclude post-title-links */
-            position: relative;
-        }
+/* Other links in main content area (`<main>`) use this specific hover effect */
+    main a:not(.post-title-link) { /* Exclude post-title-links */
+    position: relative;
+    text-decoration: none; /* Add this line to remove the default underline */
+}
         main a:not(.post-title-link):after { /* Custom animated underline for non-post-title links in main content */
             content: '';
             position: absolute;
@@ -185,15 +187,14 @@
         }
 
 
-        /* --- Sidebar Category Dividers --- */
-        .sidebar-category-heading {
-            border-bottom: 1px solid #e0e0e0; /* Light mode divider */
-            padding-bottom: 0.5rem;
-            margin-bottom: 0.75rem; /* Space below divider */
-        }
-        body.dark .sidebar-category-heading {
-            border-color: #2a2a2a; /* Dark mode divider */
-        }
+/* --- Sidebar Category Dividers --- */
+.sidebar-category-heading {
+    border-bottom: 1px solid #d1d5db; /* Changed light mode color */
+    /* ... */
+}
+body.dark .sidebar-category-heading {
+    border-color: #4b5563; /* Changed dark mode color */
+}
 
 
         /* --- Header Border --- */
@@ -244,17 +245,22 @@
             border-color: #2a2a2a; /* Dark mode border */
         }
 
-        /* --- Table of Contents (ToC) Specific Styles --- */
-        .post-toc-container {
-            border: 1px solid #e0e0e0; /* Light mode border */
-            padding: 1rem;
-            margin-bottom: 1.5rem; /* Space below the ToC box */
-            /* Background explicitly set above */
-        }
-        body.dark .post-toc-container {
-            border-color: #2a2a2a; /* Dark mode border */
-        }
+/* --- Table of Contents (ToC) Specific Styles --- */
+.post-toc-container {
+    border: 1px solid #e0e0e0; /* Light mode border */
+    padding: 1rem;
+    margin-bottom: 1.5rem; /* Space below the ToC box */
+}
 
+/* --- ADD THIS NEW RULE --- */
+body.light .post-toc-container {
+    background-color: #eee8d5; /* Or any other color you want */
+}
+/* ----------------------- */
+
+body.dark .post-toc-container {
+    border-color: #2a2a2a; /* Dark mode border */
+}
         .post-toc-container h4 { /* "In This Article" heading */
             font-family: 'Inter', sans-serif;
             font-weight: 700;
@@ -277,52 +283,68 @@
             display: block;
             padding: 0.25rem 0;
             font-size: 0.9375rem;
-            color: inherit; /* Inherit from ToC container text color */
             opacity: 0.8;
-            transition: opacity 0.2s ease-in-out;
+            transition: opacity 0.2s ease-in-out, color 0.2s ease-in-out; /* Added color to transition */
             text-decoration: none;
+        }
+        /* IMPORTANT FIX: Highest specificity for ToC link colors */
+        body.light .post-toc-container .post-toc-list li a {
+            color: var(--light-text) !important; /* Force dark text in light mode */
+        }
+        body.dark .post-toc-container .post-toc-list li a {
+            color: var(--dark-text) !important; /* Force light text in dark mode */
         }
 
         .post-toc-list li a:hover {
             opacity: 1;
-            color: var(--mint-accent);
+            color: var(--mint-accent) !important; /* Force mint color on hover with !important */
             text-decoration: underline;
         }
-
-        /* --- PROSE STYLES FIX (Critical for headings in posts) --- */
-        .main-post-content {
-            /* This div wraps your .Content in single.html */
+        /* Optional: style for when link is being clicked */
+        .post-toc-list li a:active { 
+            color: var(--mint-accent) !important;
         }
-        /* Specific overrides for h1-h6 within the .prose content */
-        .main-post-content .prose h1, .main-post-content .prose h2, 
-        .main-post-content .prose h3, .main-post-content .prose h4, 
-        .main-post-content .prose h5, .main-post-content .prose h6 {
-            font-family: 'Gabarito', sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-            font-weight: 700 !important; /* Force boldness */
-            color: inherit; /* Inherit base text color from body */
-            margin-top: 1.5em; /* Tailwind prose default margin-top for headings */
-            margin-bottom: 0.75em; /* Tailwind prose default margin-bottom for headings */
+/* --- PROSE STYLES FIX (Critical for headings in posts) --- */
+        
+        /* * Forcefully override Tailwind's .prose styles for all headings.
+         * This now uses the CORRECT selector to match your HTML structure.
+        */
+        .prose h1, 
+        .prose h2, 
+        .prose h3, 
+        .prose h4, 
+        .prose h5, 
+        .prose h6 {
+            font-family: 'Gabarito', sans-serif !important;
+            font-weight: 700 !important;
+            color: inherit !important; 
+            margin-top: 1em;
+            margin-bottom: 0.01rem;
         }
 
-        /* Explicit font sizes for headings within .prose */
-        .main-post-content .prose h1 { font-size: 2.25em; } /* Roughly Tailwind's text-4xl equivalent within prose */
-        .main-post-content .prose h2 { font-size: 1.875em; } /* Roughly Tailwind's text-3xl equivalent within prose */
-        .main-post-content .prose h3 { font-size: 1.5em; }  /* Roughly Tailwind's text-2xl equivalent within prose */
-        .main-post-content .prose h4 { font-size: 1.25em; } /* Roughly Tailwind's text-xl equivalent within prose */
-        .main-post-content .prose h5 { font-size: 1.125em; } /* Roughly Tailwind's text-lg equivalent within prose */
-        .main-post-content .prose h6 { font-size: 1em; }    /* Roughly Tailwind's text-base equivalent within prose */
+        /* Explicit font sizes with !important to ensure they are applied */
+        .prose h1 { font-size: 3rem !important; }
+        .prose h2 { font-size: 2rem !important; }
+        .prose h3 { font-size: 1.75rem !important; }
+        .prose h4 { font-size: 1.5rem !important; }
+        .prose h5 { font-size: 1.125rem !important; }
+        .prose h6 { font-size: 1rem !important; }
 
-        /* Ensure .prose links and text color are correct */
+        /* Ensure .prose links and base text color are correct */
         .prose {
-            color: inherit; /* Inherit from body for main text */
+            color: inherit;
         }
         .prose a {
-            color: var(--mint-accent); /* Links within prose are mint */
+            color: var(--mint-accent);
             text-decoration: none;
         }
         .prose a:hover {
-            text-decoration: underline; /* Standard underline for prose links on hover */
+            text-decoration: underline;
         }
+/* FINAL GAP FIX: Remove top margin from the first element of the post content */
+.main-post-content > :first-child {
+    margin-top: 0;
+}
     </style>
 </head>
 <body class="light">
@@ -344,7 +366,14 @@
         <div class="flex-1 min-w-0">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 {{ partial "header.html" . }}
-                <main id="content" class="py-8">
+                {{/* Conditionally set padding: more for homepage, less for other pages */}}
+                {{ $mainPadding := "" }}
+                {{ if .IsHome }}
+                    {{ $mainPadding = "py-16" }}
+                {{ else }}
+                    {{ $mainPadding = "py-12" }}
+                {{ end }}
+                <main id="content" class="{{ $mainPadding }}">
                     {{ block "main" . }}{{ end }}
                 </main>
                 {{ partial "footer.html" . }}
