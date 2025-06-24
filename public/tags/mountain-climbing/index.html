@@ -120,10 +120,11 @@
             width: 100%;  
         }
 
-         
-        main a:not(.post-title-link) {  
-            position: relative;
-        }
+ 
+    main a:not(.post-title-link) {  
+    position: relative;
+    text-decoration: none;  
+}
         main a:not(.post-title-link):after {  
             content: '';
             position: absolute;
@@ -315,8 +316,8 @@ body.dark .post-toc-container {
             font-family: 'Gabarito', sans-serif !important;
             font-weight: 700 !important;
             color: inherit !important; 
-            margin-top: 1.5em;
-            margin-bottom: 0.75em;
+            margin-top: 1em;
+            margin-bottom: 0.01rem;
         }
 
          
@@ -338,13 +339,13 @@ body.dark .post-toc-container {
         .prose a:hover {
             text-decoration: underline;
         }
-     
-.main-post-content {
-    margin-top: 0 !important;
-}    
+ 
+.main-post-content > :first-child {
+    margin-top: 0;
+}
     </style>
 </head>
-<body class="light">
+<body class="light h-screen">
 
     
     <div id="preloader">
@@ -353,10 +354,12 @@ body.dark .post-toc-container {
         </div>
     </div>
 
-    <div class="flex">
-        <aside class="w-64 flex-shrink-0 hidden md:block">
-            <div class="fixed top-0 left-0 h-full w-64 p-6 overflow-y-auto sidebar-container">
-                <nav class="sidebar-nav">
+    <div class="flex h-screen">
+        <aside id="sidebar" class="sidebar-container w-64 flex-shrink-0 p-6 overflow-y-auto 
+        fixed inset-y-0 left-0 z-40 
+        transform -translate-x-full transition-transform duration-300 ease-in-out 
+        md:relative md:translate-x-0">
+<nav class="sidebar-nav">
     <div class="site-title mb-8 flex items-center space-x-2">
         
             <img src="/images/cpu.png" alt="analogarden Logo" class="h-8 w-8 object-contain">
@@ -401,7 +404,7 @@ body.dark .post-toc-container {
                                 <a href="/workshop/riscv-cpu/" class="text-sm font-inter sidebar-link-item">
                                     <div class="flex items-center">
                                         
-                                            <img src="http://localhost:1313/images/chip.png" alt="RISC-y Busy-ness Logo" class="w-5 h-5 object-contain mr-2 flex-shrink-0">
+                                            <img src="http://localhost:1313/images/circuit-board.png" alt="RISC-y Busy-ness Logo" class="w-5 h-5 object-contain mr-2 flex-shrink-0">
                                         
                                         <span>RISC-y Busy-ness</span>
                                     </div>
@@ -437,6 +440,8 @@ body.dark .post-toc-container {
                                 <a href="/studio/book-review-1/" class="text-sm font-inter sidebar-link-item">
                                     <div class="flex items-center">
                                         
+                                            <img src="http://localhost:1313/images/coin.png" alt="The Psychology of Money Logo" class="w-5 h-5 object-contain mr-2 flex-shrink-0">
+                                        
                                         <span>The Psychology of Money</span>
                                     </div>
                                 </a>
@@ -471,29 +476,39 @@ body.dark .post-toc-container {
         
     </ul>
 </nav>
-            </div>
-        </aside>
+</aside>
+
+<div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"></div>
+
+<div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"></div>
 
         <div class="flex-1 min-w-0">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <header class="flex items-center justify-between py-6 border-b header-border">
-    <div class="flex-1 max-w-md relative">
+    <div class="md:hidden">
+        <button id="sidebar-toggle" aria-label="Open Menu" class="p-2 rounded-md">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </div>
+
+    <div class="flex-1 max-w-md relative ml-4 md:ml-0">
         <form id="search-form" role="search" aria-label="search-form">
             <input type="search" id="search-input" placeholder="Search posts..." autocomplete="off" class="w-full rounded-md py-2 pl-4 pr-10 focus:ring-2 focus:ring-[var(--mint-accent)] search-bar">
         </form>
-        
         <div id="search-results" class="absolute mt-2 w-full rounded-md shadow-lg z-10 hidden"></div>
     </div>
     <div class="flex items-center space-x-6">
+
         <nav class="hidden md:flex items-center space-x-6">
             
-                <a href="/workshop/" class="header-nav-link-item">Workshop</a> 
+                <a href="/workshop/" class="header-nav-link-item">Workshop</a>
             
-                <a href="/field-notes/" class="header-nav-link-item">Field Notes</a> 
+                <a href="/field-notes/" class="header-nav-link-item">Field Notes</a>
             
-                <a href="/studio/" class="header-nav-link-item">Studio</a> 
+                <a href="/studio/" class="header-nav-link-item">Studio</a>
             
         </nav>
+        
         <div class="flex items-center space-x-4 pl-6 border-l header-border">
             <a href="https://github.com/surrealmint" target="_blank" rel="noopener noreferrer" title="GitHub" class="text-inherit opacity-70 hover:opacity-100 hover:text-[var(--mint-accent)]">
                 <svg class="w-5 h-5" role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
@@ -503,16 +518,16 @@ body.dark .post-toc-container {
                 <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
             </button>
         </div>
+
     </div>
 </header>
-<hr>
 
                 
                 
                 
                     
                 
-                <main id="content" class="py-1">
+                <main id="content" class="py-12">
                     
 <div class="section-list-page">
     <h1 class="text-4xl font-bold mb-8">Mountain Climbing</h1>
@@ -667,5 +682,36 @@ body.dark .post-toc-container {
         });
     </script>
     <script src="/js/search.js"></script> 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+
+            function openSidebar() {
+                if (sidebar && overlay) {
+                    sidebar.classList.remove('-translate-x-full');
+                    overlay.classList.remove('hidden');
+                    document.body.classList.add('overflow-hidden');
+                }
+            }
+
+            function closeSidebar() {
+                if (sidebar && overlay) {
+                    sidebar.classList.add('-translate-x-full');
+                    overlay.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                }
+            }
+
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', openSidebar);
+            }
+            if (overlay) {
+                overlay.addEventListener('click', closeSidebar);
+            }
+        });
+    </script>
+    
 </body>
 </html>

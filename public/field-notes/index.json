@@ -21,7 +21,7 @@
         "uri": "http://localhost:1313/workshop/riscv-cpu/",
         "title": "RISC-y Busy-ness",
         "tags": ["risc-v","workshop"],
-        "content": "Header 1! It isn\u0026rsquo;t working i think :\nHeader 1 as well header 2 header 3 header 1 again! "
+        "content": "The motivation for this project sprung from my interest in computation.\n"
       }
     
       ,

@@ -94,3 +94,5 @@ uglyURLs = false
   startLevel = 2
   endLevel = 4
   ordered = false 
+
+  paginate = 10

@@ -6,14 +6,14 @@
     <description>Recent content in Workshop on analogarden</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 23 Jun 2025 22:37:38 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 24 Jun 2025 15:06:58 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/workshop/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RISC-y Busy-ness</title>
       <link>http://localhost:1313/workshop/riscv-cpu/</link>
       <pubDate>Fri, 20 Jun 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/workshop/riscv-cpu/</guid>
-      <description>&lt;h1 id=&#34;header-1&#34;&gt;Header 1!&lt;/h1&gt;&#xA;&lt;p&gt;It isn&amp;rsquo;t working i think :&lt;/p&gt;&#xA;&lt;h1 id=&#34;header-1-as-well&#34;&gt;Header 1 as well&lt;/h1&gt;&#xA;&lt;h2 id=&#34;header-2&#34;&gt;header 2&lt;/h2&gt;&#xA;&lt;h3 id=&#34;header-3&#34;&gt;header 3&lt;/h3&gt;&#xA;&lt;h1 id=&#34;header-1-again&#34;&gt;header 1 again!&lt;/h1&gt;</description>
+      <description>&lt;p&gt;The motivation for this project sprung from my interest in computation.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
