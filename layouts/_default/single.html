@@ -6,7 +6,7 @@
     <div class="flex flex-col md:flex-row justify-between items-start">
 
         {{/* --- LEFT COLUMN (Title and Content) --- */}}
-        <div class="flex-grow md:pr-8">
+        <div class="flex-grow md:pr-8 order-2 md:order-1">
             {{/* The post title */}}
             <h1 class="text-5xl font-bold mb-5 post-heading-color">{{ .Title }}</h1>
 
@@ -17,7 +17,7 @@
         </div>
 
         {{/* --- RIGHT COLUMN (Sidebar) --- */}}
-        <aside class="w-full md:w-auto md:min-w-[200px] md:max-w-[280px] mt-8 md:mt-0 md:ml-8 flex-shrink-0">
+        <aside class="w-full md:w-auto md:min-w-[200px] md:max-w-[280px] mt-8 md:mt-0 md:ml-8 flex-shrink-0 order-1 md:order-2">
             <div class="mb-4">
                 {{ with .Params.logo }}
                     <img src="{{ . | absURL }}" alt="{{ $.Title }} Logo" class="w-24 h-24 object-contain mb-2">

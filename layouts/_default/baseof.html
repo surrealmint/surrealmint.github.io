@@ -347,7 +347,7 @@ body.dark .post-toc-container {
 }
     </style>
 </head>
-<body class="light">
+<body class="light h-screen">
 
     <!-- Preloader HTML at the very top of the body -->
     <div id="preloader">
@@ -356,12 +356,17 @@ body.dark .post-toc-container {
         </div>
     </div>
 
-    <div class="flex">
-        <aside class="w-64 flex-shrink-0 hidden md:block">
-            <div class="fixed top-0 left-0 h-full w-64 p-6 overflow-y-auto sidebar-container">
-                {{ partial "sidebar.html" . }}
-            </div>
-        </aside>
+    <div class="flex h-screen">
+        <aside id="sidebar" class="sidebar-container w-64 flex-shrink-0 p-6 overflow-y-auto 
+        fixed inset-y-0 left-0 z-40 
+        transform -translate-x-full transition-transform duration-300 ease-in-out 
+        md:relative md:translate-x-0">
+{{ partial "sidebar.html" . }}
+</aside>
+
+<div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"></div>
+
+<div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"></div>
 
         <div class="flex-1 min-w-0">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -481,5 +486,36 @@ body.dark .post-toc-container {
         });
     </script>
     <script src="/js/search.js"></script> 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+
+            function openSidebar() {
+                if (sidebar && overlay) {
+                    sidebar.classList.remove('-translate-x-full');
+                    overlay.classList.remove('hidden');
+                    document.body.classList.add('overflow-hidden');
+                }
+            }
+
+            function closeSidebar() {
+                if (sidebar && overlay) {
+                    sidebar.classList.add('-translate-x-full');
+                    overlay.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                }
+            }
+
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', openSidebar);
+            }
+            if (overlay) {
+                overlay.addEventListener('click', closeSidebar);
+            }
+        });
+    </script>
+    
 </body>
 </html>

@@ -1,15 +1,21 @@
 <header class="flex items-center justify-between py-6 border-b header-border">
-    <div class="flex-1 max-w-md relative">
+    <div class="md:hidden">
+        <button id="sidebar-toggle" aria-label="Open Menu" class="p-2 rounded-md">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </div>
+
+    <div class="flex-1 max-w-md relative ml-4 md:ml-0">
         <form id="search-form" role="search" aria-label="search-form">
             <input type="search" id="search-input" placeholder="Search posts..." autocomplete="off" class="w-full rounded-md py-2 pl-4 pr-10 focus:ring-2 focus:ring-[var(--mint-accent)] search-bar">
         </form>
-        <!-- This is where search results will appear -->
         <div id="search-results" class="absolute mt-2 w-full rounded-md shadow-lg z-10 hidden"></div>
     </div>
     <div class="flex items-center space-x-6">
+        {{/* This nav is already correctly hidden on mobile */}}
         <nav class="hidden md:flex items-center space-x-6">
             {{ range .Site.Menus.main }}
-                <a href="{{ .URL }}" class="header-nav-link-item">{{ .Name }}</a> <!-- Applied new class -->
+                <a href="{{ .URL }}" class="header-nav-link-item">{{ .Name }}</a>
             {{ end }}
         </nav>
         <div class="flex items-center space-x-4 pl-6 border-l header-border">
@@ -23,4 +29,4 @@
         </div>
     </div>
 </header>
-<hr>
+{{/* The extra <hr> tag has been removed */}}
