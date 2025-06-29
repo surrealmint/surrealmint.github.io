@@ -47,9 +47,14 @@ uglyURLs = false
     weight = 3
   
   # Add other static sidebar entries here, e.g., direct links to sections
-  [[menu.sidebar]]digital garden
+  [[menu.sidebar]]
+    name = "All Logbook Entries"
+    url = "/all-entries/" # Link to the compiled list of all posts
+    weight = 1 # Place it lower in the list
+
+[params]
   author = "surrealmint"
-  description = "This is the analogarden"
+  description = "This is analogarden"
   default_logo = "/images/logo-analogarden-main.svg"
 
 # --- Required for Search & ToC ---
