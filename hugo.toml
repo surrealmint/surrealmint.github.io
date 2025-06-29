@@ -40,44 +40,16 @@ uglyURLs = false
     url = "/workshop/riscv-cpu/" 
     parent = "workshop"
     weight = 1
-
-  [[menu.sidebar]]
-    name = "Ohm Sweet Ohm"
-    url = "workshop/ohm-sweet-ohm/"
-    parent = "workshop"
-    weight = 2
   
   [[menu.sidebar]]
     name = "Field Notes"
     identifier = "field-notes"
     weight = 3
-
-  [[menu.sidebar]]
-    name = "Our trip to Kodagu"
-    url = "/field-notes/coorg-trip" 
-    parent = "field-notes"
-    weight = 1
-  
-  [[menu.sidebar]]
-    name = "Writings"
-    identifier = "writings"
-    weight = 2
-
-  [[menu.sidebar]]
-    name = "The Psychology of Money"
-    url = "/studio/book-review-1/" 
-    parent = "writings"
-    weight = 1
   
   # Add other static sidebar entries here, e.g., direct links to sections
-  [[menu.sidebar]]
-    name = "All Logbook Entries"
-    url = "/all-entries/" # Link to the compiled list of all posts
-    weight = 1 # Place it lower in the list
-
-[params]
+  [[menu.sidebar]]digital garden
   author = "surrealmint"
-  description = "This is my digital garden... or analogarden if it pleases you"
+  description = "This is the analogarden"
   default_logo = "/images/logo-analogarden-main.svg"
 
 # --- Required for Search & ToC ---

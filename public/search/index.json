@@ -10,14 +10,6 @@
     
       ,
       {
-        "uri": "http://localhost:1313/workshop/ohm-sweet-ohm/",
-        "title": "Ohm Sweet Ohm",
-        "tags": ["analog"],
-        "content": "My analog project.\n"
-      }
-    
-      ,
-      {
         "uri": "http://localhost:1313/workshop/riscv-cpu/",
         "title": "RISC-y Busy-ness",
         "tags": ["risc-v","workshop"],
@@ -30,14 +22,6 @@
         "title": "Coorg Trip made it out the GC",
         "tags": ["mountain climbing","field notes"],
         "content": ""
-      }
-    
-      ,
-      {
-        "uri": "http://localhost:1313/about/",
-        "title": "About Me",
-        "tags": [],
-        "content": "Hi there! I\u0026rsquo;m surrealmint, and this is my analogarden. I\u0026rsquo;m passionate about [Your interests, e.g., coding, design, photography, electronics]. Here, I share my thoughts, projects, and insights from my workshop, field notes, and studio.\n"
       }
     
 ]
